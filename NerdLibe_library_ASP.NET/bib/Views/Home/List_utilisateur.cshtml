@@ -1,0 +1,59 @@
+﻿@model List<Utilisateur>
+@{
+    ViewData["Title"] = "Liste Utilisateurs";
+}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Tables Utilisateur</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                @foreach (var Utilisateur in Model)
+                {
+                    <tr>
+                        <td>@Utilisateur.Name</td>
+                        <td>@Utilisateur.Prenome</td>
+                        <td>@Utilisateur.Email</td>
+                        <td>@Utilisateur.Password</td>
+                        <td>@Utilisateur.Role</td>
+                            <td>
+                                <a asp-controller="Home" asp-action="Edit_utilisateur" asp-route-Id="@Utilisateur.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
+                                <a asp-controller="Home" asp-action="Delete_utilisateur" asp-route-Id="@Utilisateur.Id" onclick="return confirm('The User Has been Deleted')"><i class="fas fa-trash ms-3" style="color: red; font-size: 21px;"></i></a>
+                            </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

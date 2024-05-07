@@ -1,0 +1,129 @@
+﻿@model BooksViewModel
+
+@{
+    ViewData["Title"] = "Books";
+    Layout = "_LayoutClient";
+}
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h1 class="text-white display-3 mb-4">
+            All Books & Orders
+        </h1>
+        <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Client" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active text-white">@ViewData["Title"]</li>
+        </ol>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Blog Start -->
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h5 class="text-uppercase text-primary">Latest News & Blog</h5>
+            <h1 class="mb-0">
+                Curator of an eclectic virtual library, meticulously organizing books across diverse genres and categories
+            </h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var livre in Model.Livres)
+            {
+                <div class="col-lg-6 col-xl-3">
+                    <div class="blog-item">
+                        <div class="blog-img">
+                            <img src="/imgSaved/@livre.imageName" class="img-fluid w-100" alt="" style="height: 350px;">
+                            <div class="blog-info"></div>
+                        </div>
+                        <div class="text-dark border p-4">
+                            <h4 class="mb-2">@livre.Titre</h4>
+                            <span><i class="fa fa-clock my-3"></i> @livre.DatePube.ToString("MM/dd/yyyy")</span>
+                            <p class="mb-4">@livre.Discription</p>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <button type="button" class="btn-hover-bg btn btn-primary text-white py-2 px-4" data-bs-toggle="modal" data-bs-target="#addDemande"> Reserver Livre </button>
+                            } else {
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="sign_in"> Reserver Livre </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+<!-- Modal Window -->
+<div class="modal fade" id="addDemande">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addDemandeLabel">Add Employee</h4>
+                <button type="button" class="close" data-dismiss="modalDimiss">
+                    <span>x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="reservationForm" method="post" enctype="multipart/form-data">
+                    <!-- Form fields -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Name D'emprunt</label>
+                        <input type="text" id="nameInput" class="form-control" placeholder="Nom....." required />
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Prenom D'emprunt</label>
+                        <input type="text" id="prenomInput" class="form-control" placeholder="Prenom....." required />
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Titre De Livre</label>
+                        <input type="text" id="livreInput" class="form-control" placeholder="Titre de Livre....." required />
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Date De Reservation</label>
+                        <input type="date" id="reservationDateInput" class="form-control" required />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-block" data-dismiss="modalDimiss">Close</button>
+                        <button type="button" id="saveReservationButton" class="btn btn-primary btn-block">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('saveReservationButton').addEventListener('click', function () {
+        // Récupérer les données du formulaire
+        var name = document.getElementById('nameInput').value;
+        var prenom = document.getElementById('prenomInput').value;
+        var livre = document.getElementById('livreInput').value;
+        var reservationDate = document.getElementById('reservationDateInput').value;
+
+        // Effectuer une requête AJAX vers votre contrôleur
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Client/SaveDemande', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // La demande a été enregistrée avec succès
+                    alert('Reservation saved successfully.');
+                    // Fermer la popup
+                    $('#addDemande').modal('hide');
+                } else {
+                    // Il y a eu une erreur lors de l'enregistrement
+                    alert('Error saving reservation.');
+                }
+            }
+        };
+        // Envoyer les données au contrôleur
+        var data = JSON.stringify({ Name: name, Prenome: prenom, Liver: livre, ReservationDate: reservationDate });
+        xhr.send(data);
+    });
+</script>

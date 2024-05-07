@@ -1,0 +1,66 @@
+﻿@model livreAdd
+@{
+    ViewData["Title"] = "Edite Livre";
+}
+
+<style>
+    /* Custom CSS */
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    #lab {
+        margin-bottom: 8px;
+    }
+</style>
+
+<div class="container">
+    <h2 class="text-center">Edite un Livre</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="titre" id="lab">Id :</label>
+            <input type="text" class="form-control-plaintext" readonly value="@ViewData["Id"]">
+
+        </div>
+        <div class="form-group">
+            <label for="titre" id="lab">Titre :</label>
+            <input type="text" class="form-control" id="titre" placeholder="Entrez le titre" required asp-for="Titre">
+            <span asp-validation-for="Titre" class="texte-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="auteur" id="lab">Auteur :</label>
+            <input type="text" class="form-control" id="auteur" placeholder="Entrez l'auteur" required asp-for="Auteur">
+            <span asp-validation-for="Auteur" class="texte-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="discription" id="lab">Discription:</label>
+            <input type="text" class="form-control" id="discription" placeholder="Entrez la discription de Livre" required asp-for="Discription">
+            <span asp-validation-for="Discription" class="texte-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="annee" id="lab">Année de Publication :</label>
+            <input type="date" class="form-control" id="annee" required asp-for="DatePube">
+            <span asp-validation-for="DatePube" class="texte-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="offset-sm-4 col-sm-8">
+                <img src="/imgSaved/@ViewData["ImgFile"]" width="100">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="upload" id="lab">Upload Img Book :</label>
+            <input type="file" class="form-control" id="upload" asp-for="imageFile">
+            <span asp-validation-for="imageFile" class="texte-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>

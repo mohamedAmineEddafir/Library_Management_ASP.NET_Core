@@ -1,0 +1,56 @@
+﻿@model empruntAdd
+@{
+    ViewData["Title"] = "Ajouter Empteur";
+}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label{
+        margin-bottom: 8px;
+    }
+    h2{
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <h2>Emprunt de Livre</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="livre">Cin</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Insérer Votre CIN..." asp-for="Cin" required>
+            <span asp-validation-for="Cin" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="livre">Livre</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Insérer Votre livre..." asp-for="Liver" required>
+            <span asp-validation-for="Liver" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="livre">Nom d'Emprunt</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Votre Nom complet..." asp-for="NameEmprunt" required>
+            <span asp-validation-for="NameEmprunt" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="dateEmprunt">Telephone</label>
+            <input type="text" class="form-control" id="searchLivres" name="Telephone" asp-for="Telephone" required>
+            <span asp-validation-for="Telephone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="dateEmprunt">Date d'Emprunt</label>
+            <input type="date" class="form-control" id="dateEmprunt" name="dateEmprunt" asp-for="DateEmprunt" required>
+            <span asp-validation-for="DateEmprunt" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="dateRetour">Date de Retour Prévue</label>
+            <input type="date" class="form-control" id="dateRetour" name="dateRetour" asp-for="DateRetoure" required>
+            <span asp-validation-for="DateRetoure" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Emprunter</button>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+﻿@model List<Evente>
+@{
+    ViewData["Title"] = "Liste Livre";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Tables Evente</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Localisation </th>
+                        <th>Description</th>
+                        <th>Date d'Evenet</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Localisation </th>
+                        <th>Description</th>
+                        <th>Date d'Evenet</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var Evente in Model)
+                    {
+                        <tr>
+                            <td>@Evente.Titre</td>
+                            <td>@Evente.localisation</td>
+                            <td>@Evente.Discription</td>
+                            <td>@Evente.date.ToString("MM/dd/yyyy")</td>
+                            <td><img src="/imgEvente/@Evente.imageName" width="70" /></td>
+                            <td>
+                                <a asp-controller="Home" asp-action="Edite_event" asp-route-Id="@Evente.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
+                                <a asp-controller="Home" asp-action="Delete_event" asp-route-Id="@Evente.Id" onclick="return confirm('The Book Has been Deleted')"><i class="fas fa-trash ms-3" style="color: red; font-size: 21px;"></i></a>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

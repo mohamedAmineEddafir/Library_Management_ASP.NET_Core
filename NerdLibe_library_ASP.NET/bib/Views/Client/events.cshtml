@@ -1,0 +1,43 @@
+﻿@model List<Evente>
+@{
+    ViewData["Title"] = "Events";
+    Layout = "_LayoutClient";
+}
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">
+            Upcoming Events</h1>
+            <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a asp-area="" asp-controller="Client" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item active text-white">@ViewData["Title"]</li>
+            </ol>
+    </div>
+</div>
+<!-- Header End -->
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        @foreach (var Evente in Model)
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="/imgEvente/@Evente.imageName" class="img-fluid w-100" alt="Image">
+                        <div class="event-content p-4">
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>@Evente.localisation</span>
+                                <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>@Evente.date</span>
+                            </div>
+                            <h4 class="mb-4">@Evente.Titre.</h4>
+                            <p class="mb-4">@Evente.Discription</p>
+                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>

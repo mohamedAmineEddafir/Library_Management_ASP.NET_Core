@@ -1,0 +1,46 @@
+﻿@model livreAdd
+@{
+    ViewData["Title"] = "Ajouter Livre";
+
+}
+<style>
+    /* Custom CSS */
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    #lab {
+        margin-bottom: 8px;
+    }
+</style>
+<div class="container">
+    <h2 class="text-center">Ajouter un Livre</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="titre" id="lab">Titre :</label>
+            <input type="text" class="form-control" id="titre" placeholder="Entrez le titre" asp-for="Titre" required>
+        </div>
+        <div class="form-group">
+            <label for="auteur" id="lab">Auteur :</label>
+            <input type="text" class="form-control" id="auteur" placeholder="Entrez l'auteur" asp-for="Auteur" required>
+        </div>
+        <div class="form-group">
+            <label for="discription" id="lab">Discription:</label>
+            <input type="text" class="form-control" id="discription" placeholder="Entrez la discription de Livre" asp-for="Discription" required>
+        </div>
+        <div class="form-group">
+            <label for="upload" id="lab">Upload Img Book :</label>
+            <input type="file" class="form-control" id="upload" asp-for="imageFile" required>
+        </div>
+        <div class="form-group">
+            <label for="annee" id="lab">Année de Publication :</label>
+            <input type="date" class="form-control" id="annee" asp-for="DatePube" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>

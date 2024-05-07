@@ -1,0 +1,68 @@
+﻿@model List<Livre>
+@{
+    ViewData["Title"] = "Liste Livre";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Tables Livres</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable 
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Description</th>
+                        <th>Date de publication</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Description</th>
+                        <th>Date de publication</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var Livre in Model)
+                    {
+                        <tr>
+                            <td>@Livre.Titre</td>
+                            <td>@Livre.Auteur</td>
+                            <td>@Livre.Discription</td>
+                            <td>@Livre.DatePube.ToString("MM/dd/yyyy")</td>
+                            <td><img src="/imgSaved/@Livre.imageName" width="70" /></td>
+                            <td>
+                                <a asp-controller="Home" asp-action="Edite_livre" asp-route-Id="@Livre.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
+                                <a asp-controller="Home" asp-action="Delete_livre" asp-route-Id="@Livre.Id" onclick="return confirm('The Book Has been Deleted')"><i class="fas fa-trash ms-3" style="color: red; font-size: 21px;"></i></a>
+                            </td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

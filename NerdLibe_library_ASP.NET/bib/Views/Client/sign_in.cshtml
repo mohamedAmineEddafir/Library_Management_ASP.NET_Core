@@ -1,0 +1,100 @@
+﻿@model UserAdd
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Sign in";
+    Layout = "_LayoutClient";
+}
+<div class="container-fluid"></div>
+<div class="container-fluid"></div>
+<div class="container-fluid"></div>
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+
+    <!-- Jumbotron -->
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="card cascading-right">
+                    <div class="card-body py-5 shadow-5 text-center sinform">
+                        <h2 class="fw-bold mb-5">sign in of join our community !</h2>
+
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @TempData["SuccessMessage"]
+                            </div>
+                        }
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
+
+                        <form method="post" action="sign_in">
+                            <!-- Email input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control" placeholder="Email address" asp-for="Email" required />
+                                <label class="form-label" for="form3Example3"></label>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+
+                            </div>
+
+                            <!-- Password input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="form3Example4" class="form-control" placeholder="Password" asp-for="Password" required />
+                                <label class="form-label" for="form3Example3"></label>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+
+
+                            <p>Create your own account <a asp-area="" asp-controller="Client" asp-action="sign_up">Sign up !!</a></p>
+                            <!-- Checkbox -->
+                            <div class="form-check d-flex justify-content-center mb-4">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                                <label class="form-check-label" for="form2Example33">
+                                    Subscribe to our newsletter
+                                </label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                                Sign up
+                            </button>
+
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                                <p>or sign up with:</p>
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-google"></i>
+                                </button>
+
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <img src="~/img/libe-2.jpg" class="w-100 rounded-4 shadow-4"
+                     alt="" />
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

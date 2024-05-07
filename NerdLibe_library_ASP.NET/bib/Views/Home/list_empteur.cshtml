@@ -1,0 +1,64 @@
+﻿@model List<Emprunt>
+@{
+    ViewData["Title"] = "Liste Des Empteurs";
+}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Tables Emprunts</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            DataTable
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Cin</th>
+                        <th>Livre</th>
+                        <th>Nom Emprunt</th>
+                        <th>Telephone</th>
+                        <th>Date D'emprunt</th>
+                        <th>Date de Routeur</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Cin</th>
+                        <th>Livre</th>
+                        <th>Nom Emprunt</th>
+                        <th>Telephone</th>
+                        <th>Date D'emprunt</th>
+                        <th>Date de Routeur</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var Emprunt in Model)
+                    {
+                        <tr>
+                            <td>@Emprunt.Cin</td>
+                            <td>@Emprunt.Liver</td>
+                            <td>@Emprunt.NameEmprunt</td>
+                            <td>@Emprunt.Telephone</td>
+                            <td>@Emprunt.DateEmprunt.ToString("MM/dd/yyyy")</td>
+                            <td>@Emprunt.DateRetoure.ToString("MM/dd/yyyy")</td>
+                            <td>
+                                <a asp-controller="Home" asp-action="edit_Emprunt" asp-route-Id="@Emprunt.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
+                                <a asp-controller="Home" asp-action="Delete_emprunt" asp-route-Id="@Emprunt.Id" onclick="return confirm('The Emprunt Has been Deleted')"><i class="fas fa-trash ms-3" style="color: red; font-size: 21px;"></i></a>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
