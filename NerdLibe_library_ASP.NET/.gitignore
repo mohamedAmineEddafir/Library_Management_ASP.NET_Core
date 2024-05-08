@@ -362,13 +362,12 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Dbcontext
-dbcontext.cs
 # folder migration
 Migrations/
+
 # folder img and imgSave
 img/
 imgSave/
+
 # configuration database
 appsettings.json
-Program.cs
