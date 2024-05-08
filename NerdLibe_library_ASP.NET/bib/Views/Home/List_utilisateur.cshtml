@@ -8,6 +8,12 @@
         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
         <li class="breadcrumb-item active">Tables</li>
     </ol>
+    @if (TempData["SuccessMUtilisateur"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMUtilisateur"]
+        </div>
+    }
     <div class="card mb-4">
     </div>
     <div class="card mb-4">
@@ -47,7 +53,7 @@
                         <td>@Utilisateur.Password</td>
                         <td>@Utilisateur.Role</td>
                             <td>
-                                <a asp-controller="Home" asp-action="Edit_utilisateur" asp-route-Id="@Utilisateur.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
+                                <a asp-controller="Home" asp-action="editUtilisateur" asp-route-Id="@Utilisateur.Id"><i class="fas fa-edit ms-5" style="color: blue; font-size: 21px;"></i></a>
                                 <a asp-controller="Home" asp-action="Delete_utilisateur" asp-route-Id="@Utilisateur.Id" onclick="return confirm('The User Has been Deleted')"><i class="fas fa-trash ms-3" style="color: red; font-size: 21px;"></i></a>
                             </td>
                     </tr>

@@ -285,7 +285,6 @@ namespace bib.Controllers
             return View(Utilisateur);
         }
 
-        //edit Utilisateur
         
 
         //Delete emprunt from my list_emprunt file
@@ -298,7 +297,64 @@ namespace bib.Controllers
             }
             context.Utilisateur.Remove(exutilisateur);
             context.SaveChanges();
-            TempData["SuccessMessage"] = "Utilisateur Supprimer  avec succès.";
+            TempData["SuccessMUtilisateur"] = "Utilisateur Supprimer  avec succès.";
+
+            return RedirectToAction("list_utilisateur", "Home");
+        }
+
+        //edit Utilisateur
+        public IActionResult editUtilisateur(int id)
+        {
+            var utilisateur = context.Utilisateur.Find(id);
+
+            if (utilisateur == null)
+            {
+                return RedirectToAction("list_utilisateur", "Home");
+            }
+
+            var UserAdd = new UserAdd
+            {
+                Name = utilisateur.Name,
+                Prenome = utilisateur.Prenome,
+                Email = utilisateur.Email,
+                Password = utilisateur.Password,
+                ConfirmePassword = utilisateur.ConfirmePassword,
+                Role = utilisateur.Role,
+            };
+
+            ViewData["UtilisateurId"] = utilisateur.Id;
+
+            return View("editUtilisateur", UserAdd);
+
+        }
+
+        [HttpPost]
+        public IActionResult editUtilisateur(int id, UserAdd UserAdd)
+        {
+            var exutilisateur = context.Utilisateur.Find(id);
+
+            if (exutilisateur == null)
+            {
+                return RedirectToAction("list_utilisateur", "Home");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                ViewData["UtilisateurId"] = exutilisateur.Id;
+                return View(UserAdd);
+            }
+
+            //Update emprunt in my Database
+            exutilisateur.Name = UserAdd.Name;
+            exutilisateur.Prenome = UserAdd.Prenome;
+            exutilisateur.Email = UserAdd.Email;
+            exutilisateur.Password = UserAdd.Password;
+            exutilisateur.ConfirmePassword = UserAdd.ConfirmePassword;
+            exutilisateur.Role = UserAdd.Role;
+
+
+            context.SaveChanges();
+            TempData["SuccessMUtilisateur"] = "Modification Utilisateur  avec succès.";
 
             return RedirectToAction("list_utilisateur", "Home");
         }

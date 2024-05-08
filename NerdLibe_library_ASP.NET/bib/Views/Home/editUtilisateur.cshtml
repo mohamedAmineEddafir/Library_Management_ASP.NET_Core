@@ -1,0 +1,73 @@
+﻿@model UserAdd
+@{
+    ViewData["Title"] = "Edit Empteur";
+}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin-bottom: 8px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .coR {
+        font-size: 30px;
+        font-weight: 1000;
+    }
+</style>
+<div class="container">
+    <h2>Edit Emprunt</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="coR" for="id">Id : </label>
+            <div class="col-sm-8">
+                <input class="form-control-plaintext coR" readonly id="id" name="Id" value="@ViewData["UtilisateurId"]">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="livre">Name</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Name..." asp-for="Name" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="livre">Prenome</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Prenome..." asp-for="Prenome" required>
+            <span asp-validation-for="Prenome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="livre">Email</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Email..." asp-for="Email" required>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="livre">Password</label>
+            <input type="text" class="form-control" id="searchLivres" placeholder="Password..." asp-for="Password" required>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="dateEmprunt">Confirme Password</label>
+            <input type="Texte" class="form-control" id="dateEmprunt" placeholder="Confirme Password..." asp-for="ConfirmePassword">
+            <span asp-validation-for="ConfirmePassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select class="form-control" id="role" name="role" asp-for="Role" required>
+                <option value="admin">admin</option>
+                <option value="user">user</option>
+            </select>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Utilisateur</button>
+    </form>
+</div>
