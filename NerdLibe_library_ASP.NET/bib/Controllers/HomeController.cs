@@ -1,5 +1,7 @@
 using bib.data;
 using bib.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -433,6 +435,10 @@ namespace bib.Controllers
         }
         //++++++++++++++++++++++++++++++++++++++++++// End Demande //++++++++++++++++++++++++++++++++++++++++++++++
 
-        //++++++++++++++++++++++++++++++++++++++++++// Start Demande //++++++++++++++++++++++++++++++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++// Start Logout //+++++++++++++++++++++++++++++++++++++++++++++
+        public IActionResult Logout()
+        { 
+            return RedirectToAction("Index", "Client");
+        }
     }
 }
