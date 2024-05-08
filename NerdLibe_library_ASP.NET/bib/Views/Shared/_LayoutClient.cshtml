@@ -84,7 +84,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="Logout">Logout</a>
+                            <a class="btn-hover-bg btn btn-danger text-black py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="Logout">Logout</a>
                         </div>
 
                     } else {
@@ -96,7 +96,7 @@
                     @if (User.IsInRole("admin"))
                     {
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px; color:midnightblue">
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            <a class="btn-hover-bg btn btn-info text-white py-2 px-4 me-3" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
                         </div>
                     }
 
