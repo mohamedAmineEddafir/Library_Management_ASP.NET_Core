@@ -2,6 +2,7 @@
 using bib.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.Logging;
@@ -23,7 +24,6 @@ namespace bib.Controllers
         {
             return View();
         }
-
         public IActionResult about() 
         { 
             return View();
@@ -103,10 +103,10 @@ namespace bib.Controllers
                 };
 
                 // Créez l'identité de l'utilisateur
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 // j'ai pas fait ici la Créez les propriétés de l'authentification
-                var authProperties = new AuthenticationProperties();
+                AuthenticationProperties authProperties = new AuthenticationProperties();
 
                 // Signez l'utilisateur
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,

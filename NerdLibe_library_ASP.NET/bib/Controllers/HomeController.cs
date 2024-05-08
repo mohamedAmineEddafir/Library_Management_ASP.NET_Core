@@ -1,5 +1,6 @@
 using bib.data;
 using bib.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace bib.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class HomeController : Controller
     {
         private readonly Dbcontext context;
@@ -23,7 +25,7 @@ namespace bib.Controllers
             IEnumerable<Demande> demandes = context.Demande.OrderByDescending(x => x.Id).ToList();
             return View(demandes);
         }
-        //++++++++++++++++++++++++++++++++++++++++++// New Emprunt //++++++++++++++++++++++++++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++// Start Emprunt //++++++++++++++++++++++++++++++++++++++++++
         
         public IActionResult list_Empteur()
         {
@@ -42,7 +44,7 @@ namespace bib.Controllers
             {
                 return View(empruntadd);
             }
-            //Save the new Emprunt's on ore database
+            //Save the Start Emprunt's on ore database
             Emprunt emprunt = new Emprunt()
             {
                 Cin = empruntadd.Cin,
@@ -131,9 +133,7 @@ namespace bib.Controllers
         }
             //++++++++++++++++++++++++++++++++++++++++++// End Emprunt //++++++++++++++++++++++++++++++++++++++++++
 
-
-
-            //++++++++++++++++++++++++++++++++++++++++++// New Livre //++++++++++++++++++++++++++++++++++++++++++
+            //++++++++++++++++++++++++++++++++++++++++++// Start Livre //++++++++++++++++++++++++++++++++++++++++++
             public IActionResult add_livre(livreAdd livreadd)
         {
             if (livreadd.imageFile == null)
@@ -277,7 +277,7 @@ namespace bib.Controllers
         }
         //++++++++++++++++++++++++++++++++++++++++++// End Livre //++++++++++++++++++++++++++++++++++++++++++
 
-        //++++++++++++++++++++++++++++++++++++++++++// New Utilisateur //++++++++++++++++++++++++++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++// Start Utilisateur //++++++++++++++++++++++++++++++++++++++++++
         
         public IActionResult list_utilisateur()
         {
@@ -305,7 +305,7 @@ namespace bib.Controllers
 
         //++++++++++++++++++++++++++++++++++++++++++// End Utilisateur //++++++++++++++++++++++++++++++++++++++++++
 
-        //++++++++++++++++++++++++++++++++++++++++++// New Eventes //++++++++++++++++++++++++++++++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++// Start Eventes //++++++++++++++++++++++++++++++++++++++++++++++
 
 
         public IActionResult list_Evenets()
@@ -355,7 +355,7 @@ namespace bib.Controllers
         }
         //++++++++++++++++++++++++++++++++++++++++++// End Eventes //++++++++++++++++++++++++++++++++++++++++++++++
 
-        //++++++++++++++++++++++++++++++++++++++++++// New Demande //++++++++++++++++++++++++++++++++++++++++++++++
+        //++++++++++++++++++++++++++++++++++++++++++// Start Demande //++++++++++++++++++++++++++++++++++++++++++++++
         public IActionResult liste_demands()
         {
             IEnumerable<Demande> demandes = context.Demande.OrderByDescending(x => x.Id).ToList();
@@ -375,5 +375,8 @@ namespace bib.Controllers
 
             return RedirectToAction("liste_demands", "Home");
         }
+        //++++++++++++++++++++++++++++++++++++++++++// End Demande //++++++++++++++++++++++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++++++// Start Demande //++++++++++++++++++++++++++++++++++++++++++++++
     }
 }

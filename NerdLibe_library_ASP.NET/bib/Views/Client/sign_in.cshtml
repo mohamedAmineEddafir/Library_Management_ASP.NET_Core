@@ -33,7 +33,7 @@
                             </div>
                         }
 
-                        <form method="post" action="sign_in">
+                        <form asp-controller="Client" asp-action="sign_in" method="post">
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <input type="email" id="form3Example3" class="form-control" placeholder="Email address" asp-for="Email" required />
