@@ -18,14 +18,30 @@
                 <img src="img/carousel-1.jpg" class="img-fluid" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our Planet</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-4">Protect Environment</h1>
+                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Empowering Minds, Inspiring Change</h4>
+                        <h1 class="display-1 text-capitalize text-white mb-4">NirdLibe</h1>
                         <p class="mb-5 fs-5">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            Experience seamless exploration with our automatic slide-scrolling feature. Dive into a world of learning as our curated collection unfolds before your eyes, offering continuous inspiration and discovery.
                         </p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
-                        </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-success text-black py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="books">Explore Our Books</a>
+                            </div>
+
+                        }
+                        else if (User.IsInRole("admin"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-secondary text-white py-2 px-4 me-3" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="sign_in">Join With Us</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -33,14 +49,30 @@
                 <img src="img/carousel-2.jpg" class="img-fluid" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">WE'll Save Our Planet</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-4">Protect Environment</h1>
+                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Discover a World in Motion</h4>
+                        <h1 class="display-1 text-capitalize text-white mb-4">NirdLibe</h1>
                         <p class="mb-5 fs-5">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            Immerse yourself in a seamless journey of exploration with our dynamically scrolling slides. Let knowledge flow effortlessly as you uncover new insights with each captivating transition.
                         </p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
-                        </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-success text-black py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="books">Explore Our Books</a>
+                            </div>
+
+                        }
+                        else if (User.IsInRole("admin"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-secondary text-white py-2 px-4 me-3" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="sign_in">Join With Us</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -48,14 +80,30 @@
                 <img src="img/carousel-3.jpg" class="img-fluid" alt="Image">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Inspiring Change, Empowering Minds</h4>
+                        <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Discover the Magic of</h4>
                         <h1 class="display-1 text-capitalize text-white mb-4">NirdLibe</h1>
                         <p class="mb-5 fs-5">
-                            Where Boundless Knowledge Awaits. Explore Our Vast Collection Today!
+                            Step into a world of endless discovery with our automated slide showcase. Let the magic unfold as you uncover captivating content without lifting a finger.
                         </p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary text-white py-3 px-5" href="#">Join With Us</a>
-                        </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-success text-black py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="books">Explore Our Books</a>
+                            </div>
+
+                        }
+                        else if (User.IsInRole("admin"))
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-success disabled text-white py-2 px-4 me-3" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center">
+                                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3" asp-area="" asp-controller="Client" asp-action="sign_in">Join With Us</a>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -230,16 +278,16 @@
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h5 class="text-uppercase text-primary">Achievements</h5>
             <p class="text-white mb-0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                Feel free to adjust the achievements and numbers to accurately reflect the accomplishments of your library!
             </p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-thumbs-up fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Beavers Saved</h3>
+                    <h3 class="text-white my-4">"Books Available</h3>
                     <div class="counter-counting">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">3600</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">10,000</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
@@ -247,9 +295,9 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-file-invoice-dollar fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Funds Collected</h3>
+                    <h3 class="text-white my-4">Community Impact</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">513</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">5130</span>
                         <span class="h1 fw-bold text-primary">$</span>
                     </div>
                 </div>
@@ -257,9 +305,9 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-user fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Volunteer</h3>
+                    <h3 class="text-white my-4">Digital Resources</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">713</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">1000</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
@@ -267,17 +315,15 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="counter-item text-center border p-5">
                     <i class="fas fa-heart fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Days of Help</h3>
+                    <h3 class="text-white my-4">Lifelong Learners</h3>
                     <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">487</span>
+                        <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">1287</span>
                         <span class="h1 fw-bold text-primary">+</span>
                     </div>
                 </div>
             </div>
             <div class="col-12">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Join With Us</a>
-                </div>
+                <div class="d-flex align-items-center justify-content-center"></div>
             </div>
         </div>
     </div>

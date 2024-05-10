@@ -145,6 +145,11 @@ namespace bib.Controllers
             {
                 return View(useradd);
             }
+            if (useradd.Password != useradd.ConfirmePassword)
+            {
+                ModelState.AddModelError("ConfirmePassword", "The password and confirm password do not match.");
+                return View(useradd);
+            }
             //Save the new user's on ore database
             Utilisateur utilisateur = new Utilisateur()
             {

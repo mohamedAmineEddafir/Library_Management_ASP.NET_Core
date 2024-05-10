@@ -13,7 +13,7 @@ builder.Services.AddAuthentication(
     .AddCookie(option => {
         option.LoginPath = "/Client/sign_in";
         option.AccessDeniedPath = "/Client/Index";
-        option.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);//Cookies va expirer âpre 20 Min
 
     });
 
